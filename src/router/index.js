@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Inbox from 'components/inbox/inbox'
 import Project from 'components/project/project'
-import Label from 'components/tag/tag'
+import Tag from 'components/tag/tag'
 import Predict from 'components/predict/predict'
 import Marked from 'components/marked/marked'
 import Review from 'components/review/review'
@@ -21,7 +21,7 @@ export default new Router({
     },
     {
       path: '/tag',
-      component: Label
+      component: Tag
     },
     {
       path: '/predict',
