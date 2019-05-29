@@ -1,17 +1,17 @@
 <template>
-    <div class="inbox">
-      收件箱
+    <div class="review">
+      检查
     </div>
 </template>
 
 <script>
     export default {
-        name: 'inbox'
+        name: 'review'
     }
 </script>
 
-<style scoped  lang="stylus" rel="stylesheet/stylus">
-  .inbox
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  .review
     display: flex
     justify-content: center
 </style>

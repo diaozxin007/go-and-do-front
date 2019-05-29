@@ -1,17 +1,17 @@
 <template>
-    <div class="inbox">
-      收件箱
+    <div class="tag">
+      标签
     </div>
 </template>
 
 <script>
     export default {
-        name: 'inbox'
+        name: 'label'
     }
 </script>
 
-<style scoped  lang="stylus" rel="stylesheet/stylus">
-  .inbox
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  .tag
     display: flex
     justify-content: center
 </style>

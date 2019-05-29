@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Inbox from 'components/inbox/inbox'
 import Project from 'components/project/project'
-import Label from 'components/label/label'
+import Label from 'components/tag/tag'
+import Predict from 'components/predict/predict'
+import Marked from 'components/marked/marked'
+import Review from 'components/review/review'
 
 Vue.use(Router)
 
@@ -17,8 +20,20 @@ export default new Router({
       component: Project
     },
     {
-      path: '/label',
+      path: '/tag',
       component: Label
+    },
+    {
+      path: '/predict',
+      component: Predict
+    },
+    {
+      path: '/marked',
+      component: Marked
+    },
+    {
+      path: '/review',
+      component: Review
     }
   ]
 })

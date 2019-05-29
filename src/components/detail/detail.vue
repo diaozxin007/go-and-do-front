@@ -1,17 +1,18 @@
 <template>
-    <div class="project">
-      项目
+    <div class="detail">
+      详情
     </div>
 </template>
 
 <script>
     export default {
-        name: 'project'
+        name: 'detail'
     }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  .project
+  .detail
     display: flex
-    justify-content: center
+    justify-content: flex-end
+    height: fit-content
 </style>
