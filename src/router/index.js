@@ -11,29 +11,29 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/inbox',
-      component: Inbox
-    },
-    {
-      path: '/project',
-      component: Project
-    },
-    {
-      path: '/tag',
-      component: Tag
-    },
-    {
-      path: '/predict',
-      component: Predict
-    },
-    {
-      path: '/marked',
-      component: Marked
-    },
-    {
-      path: '/review',
-      component: Review
-    }
+        {
+          path: '/inbox',
+          component: Inbox
+        },
+        {
+          path: '/project',
+          component: Project
+        },
+        {
+          path: '/tag',
+          component: Tag
+        },
+        {
+          path: '/predict',
+          component: Predict
+        },
+        {
+          path: '/marked',
+          component: Marked
+        },
+        {
+          path: '/review',
+          component: Review
+        }
   ]
 })

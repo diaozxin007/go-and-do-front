@@ -12,6 +12,6 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .tag
-    display: flex
+    flex 1
     justify-content: center
 </style>

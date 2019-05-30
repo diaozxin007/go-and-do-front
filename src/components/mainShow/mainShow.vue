@@ -1,18 +1,18 @@
 <template>
-    <div class="inbox">
-      收件箱列表
+    <div class="mainShow">
+      被选则项展示
     </div>
 </template>
 
 <script>
     export default {
-        name: 'inbox'
+        name: 'mainShow'
     }
 </script>
 
 <style scoped  lang="stylus" rel="stylesheet/stylus">
-  .inbox
-    flex 1
+  .mainShow
+    flex 0 0 40em
     justify-content: center
-    background-color bisque
+    background-color cadetblue
 </style>

@@ -12,6 +12,7 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .marked
-    display: flex
+    flex 1
     justify-content: center
+    background-color bisque
 </style>

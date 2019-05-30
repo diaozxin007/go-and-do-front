@@ -1,6 +1,6 @@
 <template>
     <div class="detail">
-      详情
+      这里是详情
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .detail
-    display: flex
-    justify-content: flex-end
-    height: fit-content
+    justify-content: center
+    flex 1
+    background-color aquamarine
 </style>
