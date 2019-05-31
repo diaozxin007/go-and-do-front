@@ -11,7 +11,7 @@
         <el-main style="padding: 0 0 0 0; margin-left: -50px">
           <div class="mainArea">
             <router-view></router-view>
-            <main-show></main-show>
+<!--            <main-show></main-show>-->
             <Detail></Detail>
           </div>
         </el-main>
