@@ -10,8 +10,13 @@ class TagPage extends StatefulWidget {
 class _TagPageState extends State<TagPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text('标签')
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('标签'),
+      ),
+      body: Center(
+          child: Text('标签')
+      ),
     );
   }
 }

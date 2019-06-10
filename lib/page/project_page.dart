@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:goanddo/navigator/side-drawer.dart';
 
 class ProjectPage extends StatefulWidget {
   @override
@@ -10,8 +9,13 @@ class ProjectPage extends StatefulWidget {
 class _ProjectPageState extends State<ProjectPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text('项目')
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('项目'),
+      ),
+      body: Center(
+          child: Text('项目')
+      ),
     );
   }
 }

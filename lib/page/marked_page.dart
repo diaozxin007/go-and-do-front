@@ -10,8 +10,13 @@ class MarkedPage extends StatefulWidget {
 class _MarkedPageState extends State<MarkedPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text('已标注')
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('已标注'),
+      ),
+      body: Center(
+          child: Text('已标注')
+      ),
     );
   }
 }
