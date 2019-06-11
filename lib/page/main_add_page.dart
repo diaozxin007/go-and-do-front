@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goanddo/navigator/side-drawer.dart';
 
 class MainAddPage extends StatefulWidget {
   @override
@@ -9,11 +8,19 @@ class MainAddPage extends StatefulWidget {
 class _MainAddPageState extends State<MainAddPage> {
   final _formKey = GlobalKey<FormState>();
 
+  static const List<Text> _tabTitle = [Text('信息'), Text('备注')];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('新建'),
+          leading: GestureDetector(
+            child: Text('取消'),
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+          ),
         ),
         body: Form(
             key: _formKey,
@@ -25,19 +32,54 @@ class _MainAddPageState extends State<MainAddPage> {
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-//                      icon: Icon(Icons.title),
-                      hintText: '未命名的项'
-                    ),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        labelText: '标题',
+                        hintText: '未命名的项'),
                     validator: (value) {
                       if (value.isEmpty) {
                         return '请输入标题';
                       }
                     },
                   ),
+                  FormTab()
                 ],
               ),
             )));
+  }
+}
+
+class FormTab extends StatefulWidget {
+  @override
+  _FormTabState createState() => _FormTabState();
+}
+
+class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
+  final List<Tab> formTabs = [Tab(text: '信息'), Tab(text: '备注')];
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: formTabs.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 10.0),
+      child: TabBar(
+        tabs: formTabs,
+        controller: _tabController,
+        labelColor: Colors.black,
+      ),
+    );
   }
 }

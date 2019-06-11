@@ -23,6 +23,7 @@ class _HomeBodyState extends State<HomeBody> {
                     Animation<double> secondaryAnimation) {
               return ScaleTransition(
                 scale: Tween<double>(begin: 0.0,end:1.0).animate(CurvedAnimation(parent: animation, curve: Curves.fastOutSlowIn)),
+                alignment: Alignment.bottomCenter,
                 child: MainAddPage(),
               );
             }));
