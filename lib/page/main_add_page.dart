@@ -16,11 +16,19 @@ class _MainAddPageState extends State<MainAddPage> {
         appBar: AppBar(
           title: Text('新建'),
           leading: GestureDetector(
-            child: Text('取消'),
-            onTap: (){
+            child: Container(
+              padding: EdgeInsets.only(top: 15),
+              child: Text(
+                '取消',
+                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            onTap: () {
               Navigator.of(context).pop();
             },
           ),
+          automaticallyImplyLeading: false,
         ),
         body: Form(
             key: _formKey,
@@ -83,3 +91,4 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
     );
   }
 }
+
