@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goanddo/widget/info_item.dart';
 
 class MainAddPage extends StatefulWidget {
   @override
@@ -81,14 +82,86 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 10.0),
-      child: TabBar(
-        tabs: formTabs,
-        controller: _tabController,
-        labelColor: Colors.black,
+    return SizedBox(
+      height: 650,
+      child: Column(
+        children: <Widget>[
+          TabBar(
+            tabs: formTabs,
+            controller: _tabController,
+            labelColor: Colors.black,
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: <Widget>[
+                Container(
+                  height: 600,
+                  alignment: Alignment.topCenter,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      InfoItem(
+                        title: '标签',
+                        leftIcon: Icon(Icons.label),
+                        iconClick: (){
+                          print('press icon');
+                        },
+                        mainClick: (){
+                          print('press item');
+                        },
+                      ),
+                      InfoItem(
+                        title: '项目',
+                        iconClick: (){
+                          print('press icon');
+                        },
+                        mainClick: (){
+                          print('press item');
+                        },
+                      ),
+                      InfoItem(
+                        title: '标注',
+                        leftIcon: Icon(Icons.bookmark),
+                        iconClick: (){
+                          print('press icon');
+                        },
+                        mainClick: (){
+                          print('press item');
+                        }
+                      ),
+                      InfoItem(
+                          title: '截止',
+                          iconClick: (){
+                            print('press icon');
+                          },
+                          mainClick: (){
+                            print('press item');
+                          }
+                      ),
+                      InfoItem(
+                          title: '通知',
+                          iconClick: (){
+                            print('press icon');
+                          },
+                          mainClick: (){
+                            print('press item');
+                          }
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 600,
+                  child: Center(
+                    child: TextField(),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
 }
-
