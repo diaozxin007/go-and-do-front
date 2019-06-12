@@ -41,10 +41,8 @@ class _MainAddPageState extends State<MainAddPage> {
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        labelText: '标题',
+                        hasFloatingPlaceholder: false,
+//                        labelText: '标题',
                         hintText: '未命名的项'),
                     validator: (value) {
                       if (value.isEmpty) {
@@ -104,57 +102,60 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
                       InfoItem(
                         title: '标签',
                         leftIcon: Icon(Icons.label),
-                        iconClick: (){
+                        iconClick: () {
                           print('press icon');
                         },
-                        mainClick: (){
+                        mainClick: () {
                           print('press item');
                         },
                       ),
                       InfoItem(
                         title: '项目',
-                        iconClick: (){
+                        iconClick: () {
                           print('press icon');
                         },
-                        mainClick: (){
+                        mainClick: () {
                           print('press item');
                         },
                       ),
                       InfoItem(
-                        title: '标注',
-                        leftIcon: Icon(Icons.bookmark),
-                        iconClick: (){
-                          print('press icon');
-                        },
-                        mainClick: (){
-                          print('press item');
-                        }
-                      ),
+                          title: '标注',
+                          leftIcon: Icon(Icons.bookmark),
+                          iconClick: () {
+                            print('press icon');
+                          },
+                          mainClick: () {
+                            print('press item');
+                          }),
                       InfoItem(
                           title: '截止',
-                          iconClick: (){
+                          iconClick: () {
                             print('press icon');
                           },
-                          mainClick: (){
+                          mainClick: () {
                             print('press item');
-                          }
-                      ),
+                          }),
                       InfoItem(
                           title: '通知',
-                          iconClick: (){
+                          iconClick: () {
                             print('press icon');
                           },
-                          mainClick: (){
+                          mainClick: () {
                             print('press item');
-                          }
-                      ),
+                          }),
                     ],
                   ),
                 ),
                 Container(
                   height: 600,
-                  child: Center(
-                    child: TextField(),
+                  child: Card(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: TextField(
+                        maxLines: 20,
+                        decoration: InputDecoration.collapsed(hintText: '轻按以添加备注',hintStyle: TextStyle()),
+                      ),
+                    ),
                   ),
                 )
               ],

@@ -38,8 +38,8 @@ class _InfoItemState extends State<InfoItem> {
         child: GestureDetector(
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white54,
-                border: Border.all(color:Colors.lightBlue,width: 1,),
+                color: Colors.white,
+//                border: Border.all(color:Colors.lightBlue,width: 1,),
                 borderRadius: BorderRadius.all(Radius.circular(7))),
             margin: EdgeInsets.only(top: 10),
             padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
