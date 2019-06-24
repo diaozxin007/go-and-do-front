@@ -47,34 +47,37 @@ class _CommonListViewState extends State<CommonListView> {
 
   Widget _buildProjectItem(ItemRootModel model) {
     return Container(
-      padding: EdgeInsets.all(10.0),
-      height: 50,
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(
-                  color: Colors.grey, width: 0.5, style: BorderStyle.solid))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            width: 5,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        padding: EdgeInsets.all(10.0),
+        height: 50,
+        decoration: BoxDecoration(
+            border: Border(
+                bottom: BorderSide(
+                    color: Colors.grey, width: 0.5, style: BorderStyle.solid))),
+        child: GestureDetector(
+          onTap: ()=>{}, //todo 具体onTap事件
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(model.title),
-              SizedBox(
-                height: 2,
+//          SizedBox(
+//            width: 5,
+//          ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(model.title),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  ChildCountWidget(
+                    totalCount: model.childCount,
+                    lightCount: model.childDeadlineCount,
+                  )
+                ],
               ),
-              ChildCountWidget(
-                totalCount: model.childCount,
-                lightCount: model.childDeadlineCount,
-              )
+              Icon(Icons.chevron_right)
             ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   _tagRootList() {}
