@@ -75,7 +75,7 @@ class _ParentState extends State<Parent> {
   }
 
   _getChild() {
-    return _isSelected ? widget.childList : Container();
+    return _isSelected && widget.childList != null ? widget.childList : Container();
   }
 }
 
