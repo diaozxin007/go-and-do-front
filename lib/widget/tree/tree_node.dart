@@ -1,16 +1,15 @@
+import 'package:meta/meta.dart';
 
-class Node<T>{
+class TreeNode {
   // 能否展开
-  bool expand;
+  final String title;
+  final bool expand;
+  final bool root;
+  final List<TreeNode> childData;
 
-  int id;
-  int parentId;
-  String path;
-
-  Node(
-      this.expand,
-      this.id,
-      this.parentId,
-      this.path
-      );
+  TreeNode(
+      {@required this.title,
+      this.expand = false,
+      this.root = false,
+      this.childData = const <TreeNode>[]});
 }

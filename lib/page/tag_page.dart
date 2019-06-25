@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:goanddo/navigator/side-drawer.dart';
+import 'package:goanddo/widget/tree/tree-widget.dart';
 
 class TagPage extends StatefulWidget {
   @override
@@ -14,9 +13,7 @@ class _TagPageState extends State<TagPage> {
       appBar: AppBar(
         title: Text('标签'),
       ),
-      body: Center(
-          child: Text('标签')
-      ),
+      body: TreeWidget(),
     );
   }
 }
