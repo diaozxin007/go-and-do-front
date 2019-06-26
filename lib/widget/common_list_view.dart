@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goanddo/model/item_root_model.dart';
-import 'dart:ui';
+import 'package:goanddo/page/tree_page.dart';
 
 enum RootListType { project, tag, review }
 
@@ -54,13 +54,13 @@ class _CommonListViewState extends State<CommonListView> {
                 bottom: BorderSide(
                     color: Colors.grey, width: 0.5, style: BorderStyle.solid))),
         child: GestureDetector(
-          onTap: ()=>{}, //todo 具体onTap事件
+          behavior: HitTestBehavior.translucent,
+          onTap: (){
+            Navigator.push(context, new MaterialPageRoute(builder: (context) => new TreePage()));
+          }, //todo 具体onTap事件
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-//          SizedBox(
-//            width: 5,
-//          ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

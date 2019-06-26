@@ -6,8 +6,9 @@ import 'package:goanddo/page/main_add_page.dart';
 import 'package:goanddo/page/marked_page.dart';
 import 'package:goanddo/page/project_page.dart';
 import 'package:goanddo/page/tag_page.dart';
+import 'package:goanddo/page/tree_page.dart';
 
-void main() => runApp(MyApp());
+void main() async => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         'project': (context) => ProjectPage(),
         'tag': (context) => TagPage(),
         'marked': (context) => MarkedPage(),
-        'home_add': (context) => MainAddPage()
+        'home_add': (context) => MainAddPage(),
+        'tree_page': (context) => TreePage()
       },
     );
   }

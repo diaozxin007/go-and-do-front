@@ -53,7 +53,7 @@ class _MainAddPageState extends State<MainAddPage> {
                   FormTab()
                 ],
               ),
-            )));
+            )),resizeToAvoidBottomPadding: false,);
   }
 }
 
@@ -81,7 +81,7 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 650,
+      height: 620,
       child: Column(
         children: <Widget>[
           TabBar(
@@ -146,8 +146,8 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
                     ],
                   ),
                 ),
-                Container(
-                  height: 600,
+                SingleChildScrollView(child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: 120.0),
                   child: Card(
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
@@ -157,7 +157,8 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
                       ),
                     ),
                   ),
-                )
+                ),),
+
               ],
             ),
           )
