@@ -5,7 +5,8 @@ class TagSearchSelector extends StatefulWidget {
   final List<ShowItem> selected;
   final SearchItem searchItem;
 
-  const TagSearchSelector({Key key, this.allCanSelect, this.selected, this.searchItem});
+  const TagSearchSelector(
+      {Key key, this.allCanSelect, this.selected, this.searchItem});
 
   @override
   _TagSearchSelectorState createState() => _TagSearchSelectorState();
@@ -14,7 +15,12 @@ class TagSearchSelector extends StatefulWidget {
 class _TagSearchSelectorState extends State<TagSearchSelector> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      decoration: BoxDecoration(),
+      child: Row(children: <Widget>[
+        widget.searchItem
+      ],),
+    );
   }
 }
 
@@ -25,9 +31,36 @@ class SearchItem extends StatefulWidget {
 }
 
 class _SearchItemState extends State<SearchItem> {
+  final TextEditingController _controller = new TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: TextField(
+        controller: _controller,
+        decoration: new InputDecoration(hintText: '添加标签'),
+      ),
+    );
+  }
+}
+
+///已选择的items
+class SelectedItems extends StatefulWidget {
+  final List<ShowItem> selected;
+
+  const SelectedItems({Key key, this.selected});
+  @override
+  _SelectedItemsState createState() => _SelectedItemsState();
+}
+
+class _SelectedItemsState extends State<SelectedItems> {
   @override
   Widget build(BuildContext context) {
     return Container();
+  }
+
+  _buildSelectedWidgets(List<ShowItem> selected){
+
   }
 }
 
@@ -37,9 +70,12 @@ class ShowItem extends StatelessWidget {
   final String label;
 
   const ShowItem({Key key, this.label});
+
   @override
   Widget build(BuildContext context) {
-    return Card(child: Text(label),color: Color.fromRGBO(221, 160, 221, 1.0),);
+    return Card(
+      child: Text(label),
+      color: Color.fromRGBO(221, 160, 221, 1.0),
+    );
   }
 }
-
