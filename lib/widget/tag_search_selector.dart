@@ -15,11 +15,16 @@ class TagSearchSelector extends StatefulWidget {
 class _TagSearchSelectorState extends State<TagSearchSelector> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(),
-      child: Row(children: <Widget>[
-        widget.searchItem
-      ],),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width - 10,
+      child: Row(
+        children: <Widget>[
+          SelectedItems(
+            selected: widget.selected,
+          ),
+          widget.searchItem
+        ],
+      ),
     );
   }
 }
@@ -35,10 +40,13 @@ class _SearchItemState extends State<SearchItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: TextField(
-        controller: _controller,
-        decoration: new InputDecoration(hintText: '添加标签'),
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: 0),
+      child: Card(
+        child: TextField(
+          controller: _controller,
+          decoration: new InputDecoration(hintText: '添加标签'),
+        ),
       ),
     );
   }
@@ -49,6 +57,7 @@ class SelectedItems extends StatefulWidget {
   final List<ShowItem> selected;
 
   const SelectedItems({Key key, this.selected});
+
   @override
   _SelectedItemsState createState() => _SelectedItemsState();
 }
@@ -56,14 +65,22 @@ class SelectedItems extends StatefulWidget {
 class _SelectedItemsState extends State<SelectedItems> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      width: MediaQuery.of(context).size.width - 10,
+      child: Row(
+        children: _buildSelectedWidgets(widget.selected),
+      ),
+    );
   }
 
-  _buildSelectedWidgets(List<ShowItem> selected){
-
+  _buildSelectedWidgets(List<ShowItem> selected) {
+    List<Widget> widgets = new List();
+    for (ShowItem item in selected) {
+      widgets.add(item);
+    }
+    return widgets;
   }
 }
-
 
 ///显示的item widget
 class ShowItem extends StatelessWidget {
@@ -73,9 +90,12 @@ class ShowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Text(label),
-      color: Color.fromRGBO(221, 160, 221, 1.0),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.15,
+      child: Card(
+        child: Text(label),
+        color: Color.fromRGBO(221, 160, 221, 1.0),
+      ),
     );
   }
 }
