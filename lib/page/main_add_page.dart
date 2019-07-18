@@ -14,46 +14,48 @@ class _MainAddPageState extends State<MainAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('新建'),
-          leading: GestureDetector(
-            child: Container(
-              padding: EdgeInsets.only(top: 15),
-              child: Text(
-                '取消',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
+      appBar: AppBar(
+        title: Text('新建'),
+        leading: GestureDetector(
+          child: Container(
+            padding: EdgeInsets.only(top: 15),
+            child: Text(
+              '取消',
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
             ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
           ),
-          automaticallyImplyLeading: false,
+          onTap: () {
+            Navigator.of(context).pop();
+          },
         ),
-        body: Form(
-            key: _formKey,
-            child: Container(
-              decoration: BoxDecoration(),
-              padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hasFloatingPlaceholder: false,
+        automaticallyImplyLeading: false,
+      ),
+      body: Form(
+          key: _formKey,
+          child: Container(
+            decoration: BoxDecoration(),
+            padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                TextFormField(
+                  decoration: InputDecoration(
+                      hasFloatingPlaceholder: false,
 //                        labelText: '标题',
-                        hintText: '未命名的项'),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return '请输入标题';
-                      }
-                    },
-                  ),
-                  FormTab()
-                ],
-              ),
-            )),resizeToAvoidBottomPadding: false,);
+                      hintText: '未命名的项'),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return '请输入标题';
+                    }
+                  },
+                ),
+                FormTab()
+              ],
+            ),
+          )),
+      resizeToAvoidBottomPadding: false,
+    );
   }
 }
 
@@ -146,19 +148,21 @@ class _FormTabState extends State<FormTab> with SingleTickerProviderStateMixin {
                     ],
                   ),
                 ),
-                SingleChildScrollView(child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: 120.0),
-                  child: Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                        maxLines: 20,
-                        decoration: InputDecoration.collapsed(hintText: '轻按以添加备注',hintStyle: TextStyle()),
+                SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: 120.0),
+                    child: Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextField(
+                          maxLines: 20,
+                          decoration: InputDecoration.collapsed(
+                              hintText: '轻按以添加备注', hintStyle: TextStyle()),
+                        ),
                       ),
                     ),
                   ),
-                ),),
-
+                ),
               ],
             ),
           )

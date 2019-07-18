@@ -15,17 +15,53 @@ class TagSearchSelector extends StatefulWidget {
 class _TagSearchSelectorState extends State<TagSearchSelector> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: MediaQuery.of(context).size.width - 10,
-      child: Row(
+      height: MediaQuery.of(context).size.height - 100,
+      alignment: Alignment.centerLeft,
+      child: Column(
         children: <Widget>[
-          SelectedItems(
-            selected: widget.selected,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 10,
+            child: Row(
+              children: <Widget>[
+                SelectedItems(
+                  selected: widget.selected,
+                ),
+                widget.searchItem
+              ],
+            ),
           ),
-          widget.searchItem
+          Container(
+            width: MediaQuery.of(context).size.width - 10,
+            height: MediaQuery.of(context).size.height - 150,
+            decoration:
+                BoxDecoration(border: Border.all(width: 2, color: Colors.red)),
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.fromLTRB(10, 4, 0, 4),
+            child: Container(
+              width: 80,
+              child: ListView(
+                children: _buildCanSelectItems(widget.allCanSelect),
+              ),
+            ),
+          )
         ],
       ),
     );
+  }
+
+  _buildCanSelectItems(List<ShowItem> allCanSelect) {
+    List<Widget> widgets = new List();
+    for (ShowItem item in allCanSelect) {
+      Widget container = SizedBox(
+        width: 50,
+        height: 40,
+        child: item,
+      );
+      widgets.add(container);
+    }
+    return widgets;
   }
 }
 
@@ -40,12 +76,18 @@ class _SearchItemState extends State<SearchItem> {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 0),
+    return Container(
+      width: 80,
+      height: 40,
       child: Card(
         child: TextField(
           controller: _controller,
-          decoration: new InputDecoration(hintText: '添加标签'),
+          decoration: InputDecoration(
+              hintText: '添加标签',
+              hintStyle: TextStyle(fontSize: 14),
+              contentPadding: EdgeInsets.all(6),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
         ),
       ),
     );
@@ -66,7 +108,7 @@ class _SelectedItemsState extends State<SelectedItems> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width - 10,
+      width: MediaQuery.of(context).size.width - 100,
       child: Row(
         children: _buildSelectedWidgets(widget.selected),
       ),
@@ -85,16 +127,27 @@ class _SelectedItemsState extends State<SelectedItems> {
 ///显示的item widget
 class ShowItem extends StatelessWidget {
   final String label;
+  final bool blankColor;
 
-  const ShowItem({Key key, this.label});
+  const ShowItem({Key key, this.label, this.blankColor = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.15,
+      height: 40,
       child: Card(
-        child: Text(label),
-        color: Color.fromRGBO(221, 160, 221, 1.0),
+        elevation: 15.0,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0))),
+        child: Text(
+          label,
+          style: TextStyle(height: 1.4),
+          textAlign: TextAlign.center,
+        ),
+        color: blankColor == false
+            ? Color.fromRGBO(221, 160, 221, 1.0)
+            : Colors.white,
       ),
     );
   }

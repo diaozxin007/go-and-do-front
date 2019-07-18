@@ -15,7 +15,8 @@ class _MarkedPageState extends State<MarkedPage> {
       appBar: AppBar(
         title: Text('已标注'),
       ),
-      body: TagSearchSelector(selected: _buildSelectedItems(),searchItem: SearchItem(),),
+      body: TagSearchSelector(selected: _buildSelectedItems(),searchItem: SearchItem(),allCanSelect: _buildAllCanSelectItems(),),
+      resizeToAvoidBottomPadding: false,
     );
   }
 
@@ -25,5 +26,13 @@ class _MarkedPageState extends State<MarkedPage> {
       selectedItems.add(ShowItem(label: "测试"+i.toString(),));
     }
     return selectedItems;
+  }
+
+  _buildAllCanSelectItems(){
+    List<ShowItem> allCanSelectItems = new List();
+    for(var i=0; i < 10; i++){
+      allCanSelectItems.add(ShowItem(label: "可选"+i.toString(),blankColor: true,));
+    }
+    return allCanSelectItems;
   }
 }
