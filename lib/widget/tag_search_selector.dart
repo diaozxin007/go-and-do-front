@@ -75,7 +75,18 @@ class _SearchItemState extends State<SearchItem> {
   final TextEditingController _controller = new TextEditingController();
 
   @override
+  void dispose() {
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _controller.addListener(() {
+      print('input ${_controller.text}');
+      if(_controller.text.length == 0){
+
+      }
+    });
     return Container(
       width: 80,
       height: 40,
