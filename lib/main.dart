@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goanddo/navigator/bottom_navigator.dart';
 import 'package:goanddo/navigator/home-body.dart';
 import 'package:goanddo/page/inbox_page.dart';
+import 'package:goanddo/page/login_page.dart';
 import 'package:goanddo/page/main_add_page.dart';
 import 'package:goanddo/page/marked_page.dart';
 import 'package:goanddo/page/project_page.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeBody(),
+      home: _isLogin() ? HomeBody() : LoginPage(),
       routes: {
         'inbox': (context) => InboxPage(),
         'project': (context) => ProjectPage(),
@@ -29,5 +30,9 @@ class MyApp extends StatelessWidget {
         'tree_page': (context) => TreePage()
       },
     );
+  }
+
+  _isLogin(){
+    return false;
   }
 }
