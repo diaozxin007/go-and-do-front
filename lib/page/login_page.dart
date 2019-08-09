@@ -14,9 +14,17 @@ class _LoginPageState extends State<LoginPage>
 
   final FocusNode myFocusNodeEmailLogin = FocusNode();
   final FocusNode myFocusNodePasswordLogin = FocusNode();
+  final FocusNode myFocusNodeName = FocusNode();
+  final FocusNode myFocusNodeEmail = FocusNode();
+  final FocusNode myFocusNodePassword = FocusNode();
 
   TextEditingController loginEmailController = new TextEditingController();
   TextEditingController loginPasswordController = new TextEditingController();
+  TextEditingController signupEmailController = new TextEditingController();
+  TextEditingController signupNicknameController = new TextEditingController();
+  TextEditingController signupPasswordController = new TextEditingController();
+  TextEditingController signupConfirmPasswordController =
+      new TextEditingController();
 
   bool _obscureTextLogin = true;
   bool _obscureTextSingup = true;
@@ -259,8 +267,7 @@ class _LoginPageState extends State<LoginPage>
               Container(
                 margin: EdgeInsets.only(top: 170.0),
                 decoration: BoxDecoration(
-                    borderRadius:
-                    BorderRadius.all(Radius.circular(5.0)),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
                         color: Theme.Colors.loginGradientStart,
@@ -296,8 +303,7 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: 'WorkSansBold'),
                       ),
                     ),
-                    onPressed: () => showInSnackBar('点击登录')
-                ),
+                    onPressed: () => showInSnackBar('点击登录')),
               ),
             ],
           ),
@@ -307,7 +313,87 @@ class _LoginPageState extends State<LoginPage>
   }
 
   Widget _buildSignUp(BuildContext context) {
-    return Container();
+    return Container(
+      padding: EdgeInsets.only(top: 23.0),
+      child: Column(
+        children: <Widget>[
+          Stack(
+            alignment: Alignment.topCenter,
+            overflow: Overflow.visible,
+            children: <Widget>[
+              Card(
+                elevation: 2.0,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
+                child: Container(
+                  width: 300.0,
+                  height: 360.0,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                        child: TextField(
+                          focusNode: myFocusNodeEmail,
+                          controller: signupEmailController,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(
+                              fontFamily: 'WorkSansSemiBold',
+                              fontSize: 16.0,
+                              color: Colors.black),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            icon: Icon(
+                              FontAwesomeIcons.envelope,
+                              color: Colors.black,
+                            ),
+                            hintText: '邮箱',
+                            hintStyle: TextStyle(
+                              fontFamily: 'WorkSansSemiBold',
+                              fontSize: 16.0
+                            )
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 250,
+                        height: 1.0,
+                        color: Colors.grey[400],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: 20.0,bottom: 20.0,left: 25.0,right: 25.0
+                        ),
+                        child: TextField(
+                          focusNode: myFocusNodeName,
+                          controller: signupEmailController,
+                          keyboardType: TextInputType.text,
+                          style: TextStyle(
+                            fontFamily: 'WorkSansSemiBold',
+                            fontSize: 16.0,
+                            color: Colors.black
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            icon: Icon(FontAwesomeIcons.user,color: Colors.black,),
+                            hintText: '昵称',
+                            hintStyle: TextStyle(
+                              fontFamily: 'WorkSansSemiBold',
+                              fontSize: 16.0
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   void _toggleLogin() {
