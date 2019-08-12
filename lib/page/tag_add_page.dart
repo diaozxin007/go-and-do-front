@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:goanddo/model/tag_model.dart';
 
 GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-String _name;
+String _title;
 int _status;
 
 class TagAddPage extends StatelessWidget {
+  final TagModel tagModel;
+
+  const TagAddPage({Key key, this.tagModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('新标签'),
+        title: tagModel == null ? Text('新标签') : Text('编辑标签'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.cancel),
@@ -23,7 +27,7 @@ class TagAddPage extends StatelessWidget {
           )
         ],
       ),
-      body: TagAddBody(),
+      body: TagAddBody(tagModel: tagModel,),
     );
   }
 
@@ -31,13 +35,16 @@ class TagAddPage extends StatelessWidget {
     var _form = _formKey.currentState;
     if (_form.validate()) {
       _form.save();
-      print(_name);
+      print(_title);
       print(_status);
     }
   }
 }
 
 class TagAddBody extends StatefulWidget {
+  final TagModel tagModel;
+
+  const TagAddBody({Key key, this.tagModel}) : super(key: key);
   @override
   _TagAddBodyState createState() => _TagAddBodyState();
 }
@@ -45,6 +52,16 @@ class TagAddBody extends StatefulWidget {
 class _TagAddBodyState extends State<TagAddBody> {
   List<String> _statusList = ['活跃', '暂停', '已丢弃'];
   int selected = 0;
+
+
+  @override
+  void initState() {
+    if(widget.tagModel != null){
+      selected = widget.tagModel.status;
+      _title = widget.tagModel.title;
+      _status = widget.tagModel.status;
+    }
+  }
 
   ValueChanged<int> onSelectedChanged(int _index) {
     setState(() {
@@ -69,25 +86,47 @@ class _TagAddBodyState extends State<TagAddBody> {
         key: _formKey,
         child: Column(
           children: <Widget>[
-            TextFormField(
-              decoration: InputDecoration(labelText: '名称',labelStyle:  TextStyle(fontSize: 20)),
-              onSaved: (val) {
-                _name = val;
-              },
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text('状态',style: TextStyle(fontSize: 20),),
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Wrap(
-                children: _statusSelects.toList(),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0,bottom: 5.0,left: 20.0,right: 20.0),
+              child: TextFormField(
+                initialValue: _title,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: '名称',
+                  hintStyle: TextStyle(
+                    fontFamily: 'WorkSansSemiBold',
+                    fontSize: 15.0,
+                  ),
+                ),
+                onSaved: (val) {
+                  _title = val;
+                },
               ),
-            )
+            ),
+            Container(
+              height: 1,
+              width: MediaQuery.of(context).size.width - 40,
+              color: Colors.grey[400],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0,bottom: 5.0,left: 20.0,right: 20.0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '状态',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10.0,left: 16.0,right: 20.0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  children: _statusSelects.toList(),
+                ),
+              ),
+            ),
           ],
         ),
       ),

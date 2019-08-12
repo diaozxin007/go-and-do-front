@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage>
       new TextEditingController();
 
   bool _obscureTextLogin = true;
-  bool _obscureTextSingup = true;
+  bool _obscureTextSignup = true;
   bool _obscureTextSignupConfirm = true;
 
   PageController _pageController;
@@ -343,16 +343,42 @@ class _LoginPageState extends State<LoginPage>
                               fontSize: 16.0,
                               color: Colors.black),
                           decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.envelope,
+                                color: Colors.black,
+                              ),
+                              hintText: '邮箱',
+                              hintStyle: TextStyle(
+                                  fontFamily: 'WorkSansSemiBold',
+                                  fontSize: 16.0)),
+                        ),
+                      ),
+                      Container(
+                        width: 250,
+                        height: 1.0,
+                        color: Colors.grey[400],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                        child: TextField(
+                          focusNode: myFocusNodeName,
+                          controller: signupEmailController,
+                          keyboardType: TextInputType.text,
+                          style: TextStyle(
+                              fontFamily: 'WorkSansSemiBold',
+                              fontSize: 16.0,
+                              color: Colors.black),
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
-                              FontAwesomeIcons.envelope,
+                              FontAwesomeIcons.user,
                               color: Colors.black,
                             ),
-                            hintText: '邮箱',
+                            hintText: '昵称',
                             hintStyle: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
-                              fontSize: 16.0
-                            )
+                                fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
                         ),
                       ),
@@ -363,30 +389,119 @@ class _LoginPageState extends State<LoginPage>
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: 20.0,bottom: 20.0,left: 25.0,right: 25.0
-                        ),
+                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                          focusNode: myFocusNodeName,
-                          controller: signupEmailController,
-                          keyboardType: TextInputType.text,
+                          focusNode: myFocusNodePassword,
+                          controller: signupPasswordController,
+                          obscureText: _obscureTextSignup,
                           style: TextStyle(
                             fontFamily: 'WorkSansSemiBold',
                             fontSize: 16.0,
-                            color: Colors.black
+                            color: Colors.black,
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(FontAwesomeIcons.user,color: Colors.black,),
-                            hintText: '昵称',
+                            icon: Icon(
+                              FontAwesomeIcons.lock,
+                              color: Colors.black,
+                            ),
+                            hintText: '密码',
                             hintStyle: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
-                              fontSize: 16.0
+                                fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
+                            suffixIcon: GestureDetector(
+                              onTap: _toggleSignup,
+                              child: Icon(
+                                _obscureTextSignup
+                                    ? FontAwesomeIcons.eye
+                                    : FontAwesomeIcons.eyeSlash,
+                                size: 15.0,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 250,
+                        height: 1.0,
+                        color: Colors.grey[400],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                        child: TextField(
+                          controller: signupConfirmPasswordController,
+                          obscureText: _obscureTextSignupConfirm,
+                          style: TextStyle(
+                            fontFamily: 'WorkSansSemiBold',
+                            fontSize: 16.0,
+                            color: Colors.black,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            icon: Icon(
+                              FontAwesomeIcons.lock,
+                              color: Colors.black,
+                            ),
+                            hintText: '确认密码',
+                            hintStyle: TextStyle(
+                                fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
+                            suffixIcon: GestureDetector(
+                              onTap: _toggleSignupConfirm,
+                              child: Icon(
+                                _obscureTextSignupConfirm
+                                    ? FontAwesomeIcons.eye
+                                    : FontAwesomeIcons.eyeSlash,
+                                size: 15.0,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 340.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Theme.Colors.loginGradientStart,
+                      offset: Offset(1.0, 6.0),
+                      blurRadius: 20.0,
+                    ),
+                    BoxShadow(
+                      color: Theme.Colors.loginGradientEnd,
+                      offset: Offset(1.0, 6.0),
+                      blurRadius: 20.0,
+                    ),
+                  ],
+                  gradient: LinearGradient(
+                      colors: [
+                        Theme.Colors.loginGradientEnd,
+                        Theme.Colors.loginGradientStart
+                      ],
+                      begin: const FractionalOffset(0.2, 0.2),
+                      end: const FractionalOffset(1.0, 1.0),
+                      stops: [0.0, 1.0],
+                      tileMode: TileMode.clamp),
+                ),
+                child: MaterialButton(
+                  highlightColor: Colors.transparent,
+                  splashColor: Theme.Colors.loginGradientEnd,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    child: Text('注册',style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25.0,
+                      fontFamily: 'WorkSansBold'
+                    ),),
+                  ),
+                  onPressed: () => showInSnackBar('点击注册'),
                 ),
               ),
             ],
@@ -399,6 +514,12 @@ class _LoginPageState extends State<LoginPage>
   void _toggleLogin() {
     setState(() {
       _obscureTextLogin = !_obscureTextLogin;
+    });
+  }
+
+  void _toggleSignup() {
+    setState(() {
+      _obscureTextSignup = !_obscureTextSignup;
     });
   }
 
@@ -417,5 +538,11 @@ class _LoginPageState extends State<LoginPage>
       backgroundColor: Colors.blue,
       duration: Duration(seconds: 3),
     ));
+  }
+
+  void _toggleSignupConfirm() {
+    setState(() {
+      _obscureTextSignupConfirm = !_obscureTextSignupConfirm;
+    });
   }
 }
